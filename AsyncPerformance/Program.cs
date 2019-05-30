@@ -7,7 +7,8 @@ namespace AsyncPerformance
     {
         static void Main(string[] args)
         {
-            var summary = BenchmarkRunner.Run<SyncVsAsyncBenchmark>();
+            //var summary = BenchmarkRunner.Run<SyncVsAsyncBenchmark>();
+            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
         }
     }
 }

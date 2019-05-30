@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Windows.Threading;
 
 namespace ControllingSynchronization
@@ -25,5 +24,20 @@ namespace ControllingSynchronization
 
 
         public DispatcherContextAwaiter GetAwaiter() => this;
+    }
+
+
+    public static class DispatcherExtensions
+    {
+        /// <summary>
+        /// Enables awaiting on an instance of the dispatcher to switch synchronization context
+        /// </summary>
+        /// <example>
+        /// await myControl.Dispatcher;
+        /// </example>
+        /// <param name="dispatcher"></param>
+        /// <returns></returns>
+        public static DispatcherContextAwaiter GetAwaiter(this Dispatcher dispatcher)
+            => new DispatcherContextAwaiter(dispatcher);
     }
 }

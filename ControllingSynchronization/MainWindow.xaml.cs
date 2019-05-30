@@ -74,26 +74,21 @@ namespace ControllingSynchronization
         {
             // Dispatcher
             ExplicitSwitchingButtonText.Text = "Switching to do work in a task";
-
-            await Awaiters.TaskSchedulerContext();
-
+            
             // Task
+            await Awaiters.TaskSchedulerContext();
             await Task.Delay(delay);
-
-            await Awaiters.DispatcherContext(Dispatcher);
-
+            
             // Dispatcher
+            await Dispatcher;
             ExplicitSwitchingButtonText.Text = "On the dispatcher for a moment";
             
-            await Awaiters.TaskSchedulerContext();
-
             // Task
+            await Awaiters.TaskSchedulerContext();
             await Task.Delay(delay);
-            Thread.Sleep(delay * 2);
-
-            await Awaiters.DispatcherContext(Dispatcher);
-
+            
             // Dispatcher
+            await Dispatcher;
             ExplicitSwitchingButtonText.Text = "End back on the dispatcher";
         }
     }
